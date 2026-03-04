@@ -20,10 +20,14 @@ llm = ChatGroq(
 # -------------------------
 # 📊 Google Sheets Setup
 # -------------------------
+
+import streamlit as st
+
+
 scope = ["https://www.googleapis.com/auth/spreadsheets"]
 
-creds = Credentials.from_service_account_file(
-    "credentials.json",
+creds = Credentials.from_service_account_info(
+    st.secrets["google_service_account"],
     scopes=scope
 )
 
