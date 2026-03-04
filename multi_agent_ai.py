@@ -2,8 +2,6 @@ from typing import TypedDict
 from langgraph.graph import StateGraph, END
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage
-import gspread
-from google.oauth2.service_account import Credentials
 from datetime import datetime
 from langgraph.graph import START
 from dotenv import load_dotenv
@@ -22,10 +20,15 @@ llm = ChatGroq(
 # -------------------------
 # 📊 Google Sheets Setup
 # -------------------------
+
+import streamlit as st
+import gspread
+from google.oauth2.service_account import Credentials
+
 scope = ["https://www.googleapis.com/auth/spreadsheets"]
 
-creds = Credentials.from_service_account_file(
-    "credentials.json",
+creds = Credentials.from_service_account_info(
+    st.secrets["google_service_account"],
     scopes=scope
 )
 
