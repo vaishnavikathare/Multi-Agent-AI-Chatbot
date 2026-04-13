@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chatbot</title>
+
+    
+</head>
+<body>
+
+<h1>🤖 AI Chatbot</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="question" placeholder="Ask something..." required>
+    <button type="submit">Ask</button>
+</form>
+
+{% if result %}
+    <h3>Answer:</h3>
+    <p>{{ result }}</p>
+{% endif %}
+
+</body>
+</html>
